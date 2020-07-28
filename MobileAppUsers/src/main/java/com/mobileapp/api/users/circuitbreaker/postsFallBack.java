@@ -23,7 +23,9 @@ class postsFallBack implements PostService{
 	@Override
 	public List<PostResposeModel> getUserPosts(String id) {
 		// TODO Auto-generated method stub
-		
+		//this condition will not be fulfilled because of the ErrorDecoder we have defined, when the exception occurs then
+		//ErrorDecoder will catch the exception first if we want to test this condition we have to disable the ErrorDecoder 
+		//by remove @Component annotation from its class "FeignErrors"
 		if((Exception)cause instanceof FeignException ) {
 			if(((FeignException) this.cause).status() == 404)
 			logger.error("404 error took place!");}
