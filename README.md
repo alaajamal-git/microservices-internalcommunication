@@ -19,5 +19,30 @@ Circuit Breaker:
   instance of the failed Feign interface, so we have to add class "postsFallBack" that implements Feign interface to override its method to use it by SpringFramework under errors
   or use a lambda expression.
   
+Run Steps:
+ 1. make a purposed exception by change the fiegn client url to wrong one: @GetMapping(value = "/users/{id}/postss") or run all services except posts-ws keep it offline.
+ 2. post : http://localhost:8011/users-ws/users
+   body : 
+   <UserResposeModel>
+    <firatname>Ziad</firatname>
+    <lastname>Jamal</lastname>
+    <email>alaajamal470@gmail.com</email>
+    <userId>2eeaec6f-4092-46d1-ba23-b84ce1006d97</userId>
+   </UserResposeModel>
+   
+3. post : http://localhost:8011/users-ws/users/login
+   body :
+    {
+    "email":"alaajamal470@gmail.com",
+    "password":"154454588"
+    }
+    Assume that the result is:
+    userid: 6540cb95-3298-40b7-9f0f-6a2a82fc7803
+    JWT: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyZWVhZWM2Zi00MDkyLTQ2ZDEtYmEyMy1iODRjZTEwMDZkOTciLCJleHAiOjE1OTUyNjk5ODN9.cIZOTV8gfZtQTa0_odhkrN2TFPvbYCTD8WbwyIPQKmg
+4. get : http://localhost:8011/users-ws/users/6540cb95-3298-40b7-9f0f-6a2a82fc7803
+   Header :
+   Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyZWVhZWM2Zi00MDkyLTQ2ZDEtYmEyMy1iODRjZTEwMDZkOTciLCJleHAiOjE1OTUyNjk5ODN9.cIZOTV8gfZtQTa0_odhkrN2TFPvbYCTD8WbwyIPQKmg
+ 
+  
 
 
