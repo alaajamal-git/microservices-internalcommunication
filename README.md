@@ -24,7 +24,7 @@ Run Steps:
  2. post : http://localhost:8011/users-ws/users
    body : 
    <UserResposeModel>
-    <firatname>Ziad</firatname>
+    <firstname>Ziad</firatname>
     <lastname>Jamal</lastname>
     <email>alaajamal470@gmail.com</email>
     <userId>2eeaec6f-4092-46d1-ba23-b84ce1006d97</userId>
