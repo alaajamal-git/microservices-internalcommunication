@@ -28,7 +28,7 @@ public class Posts {
 	
 	@RequestMapping("/users/{id}/posts")
 	@GetMapping(produces = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE,})
-	public List<ResposePostModel> getAlbums(@PathVariable String id) {
+	public List<ResposePostModel> getPosts(@PathVariable String id) {
 		List<ResposePostModel> returnValue = new ArrayList<>();
 		List<PostDto> postList=service.getPosts(id);
 		if(postList==null) return returnValue;
